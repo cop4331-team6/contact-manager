@@ -1,0 +1,23 @@
+name: Deploy Contact Manager on push to main branch
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+          
+jobs:
+  deploy:
+  
+    runs-on: self-hosted
+    
+    steps:
+      - name: File Permissions
+        run: |
+            sudo chown -R $USER:$USER .
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Copy files to desired directory
+        run: |
+            sudo rm -r "/home/bitnami/htdocs/*"
+            sudo mv -v ./* "/home/bitnami/htdocs/" &> /dev/null
