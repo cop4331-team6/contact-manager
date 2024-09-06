@@ -17,6 +17,11 @@ jobs:
             sudo chown -R $USER:$USER .
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Create LAMPAPI/DatabaseConfig.php
+        env:
+          DB_CONFIG: ${{ secrets.DB_CONFIG }}
+        run: |
+            echo "$DB_CONFIG" > LAMPAPI/DatabaseConfig.php
       - name: Copy files to desired directory
         run: |
             sudo rm -r /home/bitnami/htdocs/* &> /dev/null
