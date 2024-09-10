@@ -13,6 +13,7 @@
 	}
 
 	// Read in the first name, last name, email, and phone number for new contact.
+	$userId = $inData["userId"];
 	$firstName = $inData["firstName"];
 	$lastName = $inData["lastName"];
     $email = $inData["email"];
@@ -44,13 +45,25 @@
 		returnWithError("Could Not Add Contact");
 	}
 
-
-
 	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
 	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
 	$stmt->execute();
 	$row = $stmt->get_result()->fetch_assoc();
 	$stmt->close();
+
+	$contactID = $row["ContactID"];
+
+	$stmt = $conn->prepare("INSERT INTO Connections (UserID, ContactID) VALUES (?, ?)");
+	$stmt->bind_param("ss", $userId, $contactID);
+	$stmt->execute();
+	$affectedRows = $stmt->affected_rows;
+	$stmt->close();
+
+	if ($affectedRows === 0) {
+		returnWithError("Could Not Add Connection");
+	}
+
+
 	$conn->close();
 
 	// Found the user, return it to frontend with JSON format.
