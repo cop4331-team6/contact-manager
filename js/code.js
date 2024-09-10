@@ -191,3 +191,19 @@ function doSignUp() {
 		document.getElementById("signUpResult").innerHTML = err.message;
 	}
 }
+
+function createContact() {
+
+}
+
+function updateContact() {
+
+}
+
+function retrieveContact() {
+
+}
+
+function deleteContact() {
+	
+}
