@@ -130,3 +130,64 @@ function doLogout()
 // Once logged in, users create, update, retrieve, delete contacts
 // Contacts need at least name and email
 
+// Sign up very similar to log in may need to modify
+function doSignUp() {
+    userId = 0;
+    
+    // getElementById values are subject to change depending on frontend naming convention
+    let userName = document.getElementById("userName").value;
+    let password = document.getElementById("password").value;
+
+    document.getElementById("signUpResult").innerHTML = "";
+
+    let toBeSent = {userName:userName,password:password};
+    let jsonToBeSent = JSON.stringify(toBeSent);
+
+    let url = urlBase + '/SignUp.' + extension;
+
+    // SET UP HTTP REQUEST
+	let xhr = new XMLHttpRequest();
+    // HTML method, URL, asynchronous or not
+	// true allows for browser to execute other code in the meantime
+	// POST request
+	xhr.open("POST", url, true);
+    // Content-type is the name of the HTTP header being set
+	// Says body contains JSON and is encoded with UTF-8
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        // HANDLE RESPONSE
+		// onreadystatechange is an event handler, executes function whenever readyState changes
+		xhr.onreadystatechange = function() 
+		{
+			// readyState 4 means complete. Status 200 means successful
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				// Convert JSON string to JS object
+				let jsonObject = JSON.parse( xhr.responseText ); //Response data
+				// After converted, can assign id
+				userId = jsonObject.id;
+		
+				if( userId < 1 )
+				{		
+					document.getElementById("signUpResult").innerHTML = "Sign Up Unsuccessful";
+					return;
+				}
+				
+				// Save data to a cookie
+				saveCookie();
+				
+				// Take user to the page after successfully logging in
+				window.location.href = "contactmanager.html";
+			}
+		};
+        // SEND REQUEST
+		xhr.send(jsonPayload);
+		// Between sending the request and hearing back, the server determines if the login is successful
+		// See Login.php
+    }
+    catch(err)
+	{
+		document.getElementById("signUpResult").innerHTML = err.message;
+	}
+}
