@@ -14,10 +14,10 @@
 
 	// Read in the first name, last name, email, and phone number for contact to be deleted.
     // !!! The user should not have to type these, this info should be passed along via the delete button
-	$firstName = $inData["FirstName"];
-	$lastName = $inData["LastName"];
-    $email = $inData["Email"];
-    $birthday = $inData["Birthday"];
+	$firstName = $inData["firstName"];
+	$lastName = $inData["lastName"];
+    $email = $inData["email"];
+    $birthday = $inData["birthday"];
     // !!! Add phone number once phone number column is established
 	// $phoneNumber = $inData["PhoneNumber"];
 
