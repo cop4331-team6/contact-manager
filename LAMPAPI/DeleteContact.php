@@ -14,6 +14,7 @@
 
 	// Read in the first name, last name, email, and phone number for contact to be deleted.
     // !!! The user should not have to type these, this info should be passed along via the delete button
+	$userId = $inData["userId"];
 	$firstName = $inData["firstName"];
 	$lastName = $inData["lastName"];
     $email = $inData["email"];
@@ -32,7 +33,17 @@
 		returnWithError("Contact Does Not Exist");
 	}
 
+	$contactID = $row["ContactID"];
+
+
+	$stmt = $conn->prepare("DELETE FROM Connections WHERE UserID=? AND ContactID=?");
+	$stmt->bind_param("ss", $userId, $contactID);
+	$stmt->execute();
+	$stmt->close();
+
+
     // !!! Add phone number to this query
+	// Change this to delete from connections too
     $stmt = $conn->prepare("DELETE FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
 	// Parameterized SQL queries for ease of use and security.
 	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
