@@ -31,14 +31,27 @@
 	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
 	// Execute the query and store the result in $row.
 	$stmt->execute();
+	// $row = $stmt->get_result()->fetch_assoc();
+	$affectedRows = $stmt->affected_rows;
+	$stmt->close();
+
+	
+	// if (!$row) {
+	// 	returnWithError("Could Not Add Contact");
+	// }
+
+	if ($affectedRows === 0) {
+		returnWithError("Could Not Add Contact");
+	}
+
+
+
+	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
+	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
+	$stmt->execute();
 	$row = $stmt->get_result()->fetch_assoc();
 	$stmt->close();
 	$conn->close();
-
-	// Empty row.
-	if (!$row) {
-		returnWithError("Could Not Add Contact");
-	}
 
 	// Found the user, return it to frontend with JSON format.
 	returnWithInfo($row["ContactID"], $row["firstName"], $row["lastName"], $row["email"], $row["birthday"]);
