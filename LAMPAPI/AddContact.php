@@ -26,7 +26,7 @@
     // !!! Add phone number to this query
     // Note that ContactID auto increments, don't need explicitly add
     // INSERT INTO Contacts (firstName, lastName, email, birthday) VALUES (?, ?, ?, ?);
-    $stmt = $conn->prepare("INSERT INTO Contacts (firstName, lastName, email, birthday) VALUES (?, ?, ?, ?);");
+    $stmt = $conn->prepare("INSERT INTO Contacts (firstName, lastName, email, birthday) VALUES (?, ?, ?, ?)");
 	// Parameterized SQL queries for ease of use and security.
 	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
 	// Execute the query and store the result in $row.
