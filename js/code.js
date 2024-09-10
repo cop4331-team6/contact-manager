@@ -210,8 +210,8 @@ function createContact() {
 
 	document.getElementById("addResult").innerHTML = "";
 
-	// let toBeSent = {FirstName:firstName, LastName:lastName, Email:email, Birthday:birthday, PhoneNumber:phoneNumber};
-	let toBeSent = {FirstName:firstName, LastName:lastName, Email:email, Birthday:birthday};
+	// let toBeSent = {firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
+	let toBeSent = {firstName:firstName, lastName:lastName, email:email, birthday:birthday};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/AddContact.' + extension;
