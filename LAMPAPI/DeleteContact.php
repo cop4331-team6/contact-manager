@@ -22,7 +22,7 @@
 	// $phoneNumber = $inData["PhoneNumber"];
 
 	// Check if the row entry exists
-	$stmt = $conn->prepare("EXISTS(SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
+	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
 	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
 	$stmt->execute();
 	$row = $stmt->get_result()->fetch_assoc();
