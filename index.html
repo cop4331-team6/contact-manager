@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Team 6 Contact Manager</title>
+      <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    Team 6 Contact Manager
-    <script>
-        // This is just to test, please delete this.
-        let xhr = new XMLHttpRequest();
-	    xhr.open("POST", "/LAMPAPI/Login.php", true);
-	    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-        try
-        {
-            xhr.onreadystatechange = function() 
-            {
-                if (this.readyState == 4 && this.status == 200) 
-                {
-                    console.log("Success!");
-                    console.log(JSON.parse(xhr.responseText));
-                }
-            };
-            xhr.send(JSON.stringify({Username: "Jason", Password: "1234"}));
-        }
-        catch(err)
-        {
-            console.log("Error: "+err.message)
-        }
-    </script>
+      <div class="main">
+            <h1>Contact Manager</h1>
+            <h3>Enter your username and password</h3>
+            <form action="">
+                  <label for="first">
+                        Username:
+                  </label>
+                  <input type="text" 
+                         id="first" 
+                         name="first" 
+                         placeholder="Enter your Username" required>
+
+                  <label for="password">
+                        Password:
+                  </label>
+                  <input type="password"
+                         id="password" 
+                         name="password"
+                         placeholder="Enter your Password" required>
+
+                  <div class="wrap">
+                        <button type="submit">
+                              Login
+                        </button>
+                  </div>
+            </form>
+            <p>No account yet? 
+                  <a href="#" class="create-link">
+                        Create an account
+                  </a>
+            </p>
+      </div>
 </body>
+
 </html>
