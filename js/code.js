@@ -262,5 +262,47 @@ function retrieveContact() {
 }
 
 function deleteContact() {
+	// Delete button: should just click it, ask for confirmation, then delete
 
+	// Read the info of the contact to delete
+	let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+	let email = document.getElementById("email").value;
+	let birthday = document.getElementById("birthday").value;
+    // let phoneNumber = document.getElementById("phoneNumber").value;
+
+	document.getElementById("deleteResult").innerHTML = "";
+
+	// let toBeSent = {FirstName:firstName, LastName:lastName, Email:email, Birthday:birthday, PhoneNumber:phoneNumber};
+	let toBeSent = {FirstName:firstName, LastName:lastName, Email:email, Birthday:birthday};
+    let jsonToBeSent = JSON.stringify(toBeSent);
+
+	let url = urlBase + '/DeleteContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+        // HANDLE RESPONSE
+		xhr.onreadystatechange = function() 
+		{
+			// readyState 4 means complete. Status 200 means successful
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				// Convert JSON string to JS object
+				let jsonObject = JSON.parse( xhr.responseText ); //Response data
+				// After converted, can assign id
+				message = jsonObject.message;
+		
+				document.getElementById("deleteResult").innerHTML = message
+			}
+		};
+        // SEND REQUEST
+		xhr.send(jsonPayload);
+    }
+    catch(err)
+	{
+		document.getElementById("deleteResult").innerHTML = err.message;
+	}
 }
