@@ -177,14 +177,12 @@ function doSignUp() {
 				// Save data to a cookie
 				saveCookie();
 				
-				// Take user to the page after successfully logging in
+				// Take user to the page after successfully signing up
 				window.location.href = "contactmanager.html";
 			}
 		};
         // SEND REQUEST
 		xhr.send(jsonPayload);
-		// Between sending the request and hearing back, the server determines if the login is successful
-		// See Login.php
     }
     catch(err)
 	{
@@ -193,7 +191,58 @@ function doSignUp() {
 }
 
 function createContact() {
+	// Add button takes to html or popup to add contact
+	// Text box asks for First Name, Last Name, Email, Phone Number
+	// Click Save button to call this function
 
+	contactId = 0
+
+	// Take in the new contact information
+	let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+	let email = document.getElementById("email").value;
+    let phoneNumber = document.getElementById("phoneNumber").value;
+
+	document.getElementById("addResult").innerHTML = "";
+
+	let toBeSent = {firstName:firstName, lastName:lastName, email:email, phoneNumber:phoneNumber};
+    let jsonToBeSent = JSON.stringify(toBeSent);
+
+	let url = urlBase + '/AddContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+        // HANDLE RESPONSE
+		xhr.onreadystatechange = function() 
+		{
+			// readyState 4 means complete. Status 200 means successful
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				// Convert JSON string to JS object
+				let jsonObject = JSON.parse( xhr.responseText ); //Response data
+				// After converted, can assign id
+				contactId = jsonObject.id;
+		
+				if (contactId < 1)
+				{		
+					document.getElementById("addResult").innerHTML = "Could Not Add Contact";
+					return;
+				}
+				
+				// Take user to the main page after successfully adding a contact
+				window.location.href = "contactmanager.html";
+			}
+		};
+        // SEND REQUEST
+		xhr.send(jsonPayload);
+    }
+    catch(err)
+	{
+		document.getElementById("addResult").innerHTML = err.message;
+	}
 }
 
 function updateContact() {
@@ -205,5 +254,5 @@ function retrieveContact() {
 }
 
 function deleteContact() {
-	
+
 }
