@@ -21,6 +21,17 @@
     // !!! Add phone number once phone number column is established
 	// $phoneNumber = $inData["PhoneNumber"];
 
+	// Check if the row entry exists
+	$stmt = $conn->prepare("EXISTS(SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
+	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
+	$stmt->execute();
+	$row = $stmt->get_result()->fetch_assoc();
+	$stmt->close();
+
+	if (!$row) {
+		returnWithError("Contact Does Not Exist");
+	}
+
     // !!! Add phone number to this query
     $stmt = $conn->prepare("DELETE FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
 	// Parameterized SQL queries for ease of use and security.
