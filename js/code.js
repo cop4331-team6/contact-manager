@@ -19,7 +19,8 @@ function doLogin() {
 
     document.getElementById("loginResult").innerHTML = "";
 
-    let toBeSent = {userName:userName,password:password};
+	// !!!
+    let toBeSent = {Username:userName,Password:password};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
     let url = urlBase + '/Login.' + extension;
@@ -45,7 +46,8 @@ function doLogin() {
 				// Convert JSON string to JS object
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
 				// After converted, can assign id
-				userId = jsonObject.id;
+				// !!!
+				userId = jsonObject.UserID;
 		
 				if( userId < 1 )
 				{		
@@ -140,7 +142,8 @@ function doSignUp() {
 
     document.getElementById("signUpResult").innerHTML = "";
 
-    let toBeSent = {userName:userName,password:password};
+	// !!!
+    let toBeSent = {Username:userName,Password:password};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
     let url = urlBase + '/SignUp.' + extension;
@@ -166,7 +169,8 @@ function doSignUp() {
 				// Convert JSON string to JS object
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
 				// After converted, can assign id
-				userId = jsonObject.id;
+				// !!!
+				userId = jsonObject.UserID;
 		
 				if( userId < 1 )
 				{		
@@ -201,11 +205,13 @@ function createContact() {
 	let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
-    let phoneNumber = document.getElementById("phoneNumber").value;
+	let birthday = document.getElementById("birthday").value;
+    // let phoneNumber = document.getElementById("phoneNumber").value;
 
 	document.getElementById("addResult").innerHTML = "";
 
-	let toBeSent = {firstName:firstName, lastName:lastName, email:email, phoneNumber:phoneNumber};
+	// let toBeSent = {FirstName:firstName, LastName:lastName, Email:email, Birthday:birthday, PhoneNumber:phoneNumber};
+	let toBeSent = {FirstName:firstName, LastName:lastName, Email:email, Birthday:birthday};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/AddContact.' + extension;
@@ -224,16 +230,18 @@ function createContact() {
 				// Convert JSON string to JS object
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
 				// After converted, can assign id
-				contactId = jsonObject.id;
+				contactId = jsonObject.ContactID;
 		
-				if (contactId < 1)
+				// !!! Check for proper syntax
+				// is this proper syntax? What happens when not properly added?
+				if (contactId == "")
 				{		
 					document.getElementById("addResult").innerHTML = "Could Not Add Contact";
 					return;
 				}
 				
-				// Take user to the main page after successfully adding a contact
-				window.location.href = "contactmanager.html";
+				// !!! Maybe change what happens after. Maybe go back by clicking x button
+				document.getElementById("addResult").innerHTML = "Contact Added!"
 			}
 		};
         // SEND REQUEST
