@@ -202,6 +202,8 @@ function createContact() {
 	contactId = 0
 
 	// Take in the new contact information
+	// !!! Is the userId readily available?
+	let userId = document.getElementById("userId").value;
 	let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
@@ -210,8 +212,8 @@ function createContact() {
 
 	document.getElementById("addResult").innerHTML = "";
 
-	// let toBeSent = {firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
-	let toBeSent = {firstName:firstName, lastName:lastName, email:email, birthday:birthday};
+	// let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
+	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/AddContact.' + extension;
@@ -265,6 +267,8 @@ function deleteContact() {
 	// Delete button: should just click it, ask for confirmation, then delete
 
 	// Read the info of the contact to delete
+	// !!! Is the userId readily available?
+	let userId = document.getElementById("userId").value;
 	let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
@@ -273,8 +277,8 @@ function deleteContact() {
 
 	document.getElementById("deleteResult").innerHTML = "";
 
-	// let toBeSent = {FirstName:firstName, LastName:lastName, Email:email, Birthday:birthday, PhoneNumber:phoneNumber};
-	let toBeSent = {FirstName:firstName, LastName:lastName, Email:email, Birthday:birthday};
+	// let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
+	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/DeleteContact.' + extension;
