@@ -56,6 +56,8 @@ function doLogin() {
 				if( userId < 1 )
 				{		
 					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					// For debugging
+					window.location.href = "checkerror.html";
 					return;
 				}
 				
