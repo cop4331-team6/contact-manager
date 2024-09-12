@@ -31,13 +31,13 @@ body {
 
 /* Form Header Styling */
 .form-header h1 {
-    color: #2c3e50;
+    color: #000000;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
 .form-header h3 {
-    color: #447db3;
+    color: #000000;
     margin-bottom: 20px;
 }
 
@@ -106,13 +106,29 @@ button:hover {
 }
 
 /* Create Account Link */
-.create-link {
+.create-link span{
     color: #3498db;
     text-decoration: none;
     font-weight: 600;
 }
 
-.create-link:hover {
+#create-account-link {
+    color: #3498db; 
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#create-account-link:hover {
+    text-decoration: underline;
+}
+
+#login-link{
+    color: #3498db; 
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#login-link:hover{
     text-decoration: underline;
 }
 
