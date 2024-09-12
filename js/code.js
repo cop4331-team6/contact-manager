@@ -14,25 +14,25 @@ let userName = "";
 
 let loginForm = document.getElementById("login-form");
 
-	loginForm.addEventListener("submit", (e) => {
-		e.preventDefault();
+loginForm.addEventListener("submit", (e) => {
+	e.preventDefault();
 
-		let userName = document.getElementById("user").value;
-    	let password = document.getElementById("password").value;
+	let userName = document.getElementById("user").value;
+	let password = document.getElementById("password").value;
 
-		console.log(
-			`This form has a username of ${userName.value} and password of ${password.value}`
-		);
+	console.log(
+		`This form has a username of ${userName.value} and password of ${password.value}`
+	);
 
-		window.location.href = "contact.html";
+	window.location.href = "contact.html";
 
-		// if (username.value == "" || password.value == "") {
-		// 	// throw error
-		// } else {
-		// // perform operation with form input
-		// }
+	// if (username.value == "" || password.value == "") {
+	// 	// throw error
+	// } else {
+	// // perform operation with form input
+	// }
 
-	}
+}
 
 
 
