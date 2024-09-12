@@ -10,6 +10,10 @@ let userId = 0;
 // userName will be used in the cookie
 let userName = "";
 
+function testConnect() {
+	window.location.href = "contact.html";
+}
+
 function doLogin() {
     userId = 0;
     
