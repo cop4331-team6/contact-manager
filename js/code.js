@@ -115,6 +115,8 @@ function readCookie()
 		// valid user id not found
 		window.location.href = "index.html";
 	}
+
+	return {userId:userId}
 }
 
 function doLogout()
@@ -202,18 +204,17 @@ function createContact() {
 	contactId = 0
 
 	// Take in the new contact information
-	// !!! Is the userId readily available?
-	let userId = document.getElementById("userId").value;
+	let userId = readCookie().userId
 	let firstName = document.getElementById("firstName").value;
-    let lastName = document.getElementById("lastName").value;
+    	let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
 	let birthday = document.getElementById("birthday").value;
-    let phoneNumber = document.getElementById("phoneNumber").value;
+    	let phoneNumber = document.getElementById("phoneNumber").value;
 
 	document.getElementById("addResult").innerHTML = "";
 
 	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
-    let jsonToBeSent = JSON.stringify(toBeSent);
+    	let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/AddContact.' + extension;
 
@@ -266,8 +267,7 @@ function deleteContact() {
 	// Delete button: should just click it, ask for confirmation, then delete
 
 	// Read the info of the contact to delete
-	// !!! Is the userId readily available?
-	let userId = document.getElementById("userId").value;
+	let userId = readCookie().userId
 	let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
