@@ -13,6 +13,7 @@ erDiagram
         varchar firstName
         varchar lastName
         varchar email
+        varchar phoneNumber
         DATETIME birthday
     }
     Connection {
@@ -41,6 +42,7 @@ CREATE TABLE Contacts (
     firstName varchar(255),
     lastName varchar(255),
     email varchar(255),
+    phoneNumber varchar(10),
     birthday DATE,
     PRIMARY KEY (ContactID)
 );
