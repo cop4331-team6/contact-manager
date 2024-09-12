@@ -59,7 +59,7 @@ function doLogin() {
 				saveCookie();
 				
 				// Take user to the page after successfully logging in
-				window.location.href = "contactmanager.html";
+				window.location.href = "contact.html";
 			}
 		};
         // SEND REQUEST
@@ -184,7 +184,7 @@ function doSignUp() {
 				saveCookie();
 				
 				// Take user to the page after successfully signing up
-				window.location.href = "contactmanager.html";
+				window.location.href = "contact.html";
 			}
 		};
         // SEND REQUEST
