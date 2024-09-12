@@ -21,6 +21,8 @@ function doLogin() {
     let userName = document.getElementById("user").value;
     let password = document.getElementById("password").value;
 
+	window.location.href = "checkerror.html";
+
     // document.getElementById("loginResult").innerHTML = "";
 
 	// !!!
@@ -57,7 +59,6 @@ function doLogin() {
 				{		
 					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					// For debugging
-					window.location.href = "checkerror.html";
 					return;
 				}
 				
