@@ -68,14 +68,14 @@ VALUES
 ('Tiffany', '1234'),
 ('Jason', '1234');
 
-INSERT INTO Contacts (firstName, lastName, email, birthday)
+INSERT INTO Contacts (firstName, lastName, email, phoneNumber, birthday)
 VALUES
-('Dawn', 'McGuffin', 'kane1977@gmail.com', '1967-7-15'),
-('Jasper', 'Schnwager', 'jarret.turn@hotmail.com', '1968-7-15'),
-('Jose', 'Padgett', 'elisabeth_polli@gmail.com', '1970-7-15'),
-('John', 'Buzzard', 'kane1977@gmail.com', '1971-7-15'),
-('Linda', 'Marshall', 'major_kub1994@yahoo.com', '1972-7-15'),
-('Henry', 'Johnson', 'timothy1979@hotmail.com', '1973-7-15');
+('Dawn', 'McGuffin', 'kane1977@gmail.com', '123456789', '1967-7-15'),
+('Jasper', 'Schnwager', 'jarret.turn@hotmail.com', '123456789', '1968-7-15'),
+('Jose', 'Padgett', 'elisabeth_polli@gmail.com', '123456789', '1970-7-15'),
+('John', 'Buzzard', 'kane1977@gmail.com', '123456789', '1971-7-15'),
+('Linda', 'Marshall', 'major_kub1994@yahoo.com', '123456789', '1972-7-15'),
+('Henry', 'Johnson', 'timothy1979@hotmail.com', '123456789', '1973-7-15');
 
 INSERT INTO Connections (UserId, ContactId)
 VALUES
