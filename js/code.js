@@ -14,7 +14,7 @@ function doLogin() {
     userId = 0;
     
     // getElementById values are subject to change depending on frontend naming convention
-    let userName = document.getElementById("userName").value;
+    let userName = document.getElementById("user").value;
     let password = document.getElementById("password").value;
 
     // document.getElementById("loginResult").innerHTML = "";
@@ -139,7 +139,7 @@ function doSignUp() {
     userId = 0;
     
     // getElementById values are subject to change depending on frontend naming convention
-    let userName = document.getElementById("userName").value;
+    let userName = document.getElementById("user").value;
     let password = document.getElementById("password").value;
 
     // document.getElementById("signUpResult").innerHTML = "";
