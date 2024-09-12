@@ -23,7 +23,7 @@
 
 	// Check if the row entry exists
 	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND phoneNumber=? AND birthday=?");
-	$stmt->bind_param("ssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
+	$stmt->bind_param("sssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
 	$stmt->execute();
 	$row = $stmt->get_result()->fetch_assoc();
 	$stmt->close();
@@ -45,7 +45,7 @@
 	// Change this to delete from connections too
     $stmt = $conn->prepare("DELETE FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND phoneNumber=? AND birthday=?");
 	// Parameterized SQL queries for ease of use and security.
-	$stmt->bind_param("ssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
+	$stmt->bind_param("sssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
 	// Execute the query and store the result in $row.
 	$stmt->execute();
 	$affectedRows = $stmt->affected_rows;

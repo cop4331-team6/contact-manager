@@ -43,7 +43,7 @@
 	}
 
 	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND phoneNumber=? AND birthday=?");
-	$stmt->bind_param("ssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
+	$stmt->bind_param("sssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
 	$stmt->execute();
 	$row = $stmt->get_result()->fetch_assoc();
 	$stmt->close();
