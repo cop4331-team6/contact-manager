@@ -258,8 +258,8 @@ function updateContact() {
 
 }
 
-function retrieveContact() {
-
+function retrieveContacts() {
+	// TODO
 }
 
 function deleteContact() {
