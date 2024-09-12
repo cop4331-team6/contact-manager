@@ -15,12 +15,12 @@ function testConnect() {
 }
 
 function doLogin() {
-    window.location.href = "checkerror.html";
     userId = 0;
     
     // getElementById values are subject to change depending on frontend naming convention
     let userName = document.getElementById("user").value;
     let password = document.getElementById("password").value;
+    window.location.href = "checkerror.html";
 
 
     // document.getElementById("loginResult").innerHTML = "";
