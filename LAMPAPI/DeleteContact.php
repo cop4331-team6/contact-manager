@@ -18,13 +18,12 @@
 	$firstName = $inData["firstName"];
 	$lastName = $inData["lastName"];
     $email = $inData["email"];
+	$phoneNumber = $inData["phoneNumber"];
     $birthday = $inData["birthday"];
-    // !!! Add phone number once phone number column is established
-	// $phoneNumber = $inData["PhoneNumber"];
 
 	// Check if the row entry exists
-	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
-	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
+	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND phoneNumber=? AND birthday=?");
+	$stmt->bind_param("ssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
 	$stmt->execute();
 	$row = $stmt->get_result()->fetch_assoc();
 	$stmt->close();
@@ -44,9 +43,9 @@
 
     // !!! Add phone number to this query
 	// Change this to delete from connections too
-    $stmt = $conn->prepare("DELETE FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
+    $stmt = $conn->prepare("DELETE FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND phoneNumber=? AND birthday=?");
 	// Parameterized SQL queries for ease of use and security.
-	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
+	$stmt->bind_param("ssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
 	// Execute the query and store the result in $row.
 	$stmt->execute();
 	$affectedRows = $stmt->affected_rows;

@@ -17,19 +17,16 @@
 	$firstName = $inData["firstName"];
 	$lastName = $inData["lastName"];
     $email = $inData["email"];
+	$phoneNumber = $inData["phoneNumber"];
     $birthday = $inData["birthday"];
-    // !!! Add phone number once phone number column is established
-	// $phoneNumber = $inData["PhoneNumber"];
-
+	
 	// From JY: Please do not store my password in the database.
 	// $password = password_hash($password, PASSWORD_DEFAULT);
 
-    // !!! Add phone number to this query
     // Note that ContactID auto increments, don't need explicitly add
-    // INSERT INTO Contacts (firstName, lastName, email, birthday) VALUES (?, ?, ?, ?);
-    $stmt = $conn->prepare("INSERT INTO Contacts (firstName, lastName, email, birthday) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO Contacts (firstName, lastName, email, phoneNumber, birthday) VALUES (?, ?, ?, ?, ?)");
 	// Parameterized SQL queries for ease of use and security.
-	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
+	$stmt->bind_param("sssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
 	// Execute the query and store the result in $row.
 	$stmt->execute();
 	// $row = $stmt->get_result()->fetch_assoc();
@@ -45,8 +42,8 @@
 		returnWithError("Could Not Add Contact");
 	}
 
-	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND birthday=?");
-	$stmt->bind_param("ssss", $firstName, $lastName, $email, $birthday);
+	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND phoneNumber=? AND birthday=?");
+	$stmt->bind_param("ssss", $firstName, $lastName, $email, $phoneNumber, $birthday);
 	$stmt->execute();
 	$row = $stmt->get_result()->fetch_assoc();
 	$stmt->close();
@@ -67,7 +64,7 @@
 	$conn->close();
 
 	// Found the user, return it to frontend with JSON format.
-	returnWithInfo($row["ContactID"], $row["firstName"], $row["lastName"], $row["email"], $row["birthday"]);
+	returnWithInfo($row["ContactID"], $row["firstName"], $row["lastName"], $row["email"], $row["phoneNumber"], $row["birthday"]);
 
     function getRequestInfo() {
 		return json_decode(file_get_contents('php://input'), true);
@@ -79,13 +76,13 @@
 	}
 
 	function returnWithError($err) {
-		$jsonVal = sprintf('{"ContactID":"","firstName":"","lastName":"","email":"","birthday":"","error":"%s"}', $err);
+		$jsonVal = sprintf('{"ContactID":"","firstName":"","lastName":"","email":"","phoneNumber":"","birthday":"","error":"%s"}', $err);
 		sendResultInfoAsJson($jsonVal);
 		exit;
 	}
 
-    function returnWithInfo($contactID, $firstName, $lastName, $email, $birthday) {
-		$jsonVal = sprintf('{"ContactID":"%s","firstName":"%s","lastName":"%s","email":"%s","birthday":"%s","error":""}', $contactID, $firstName, $lastName, $email, $birthday);
+    function returnWithInfo($contactID, $firstName, $lastName, $email, $phoneNumber, $birthday) {
+		$jsonVal = sprintf('{"ContactID":"%s","firstName":"%s","lastName":"%s","email":"%s","phoneNumber":"%s","birthday":"%s","error":""}', $contactID, $firstName, $lastName, $email, $phoneNumber, $birthday);
 		sendResultInfoAsJson($jsonVal);
 	}
 ?>
