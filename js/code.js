@@ -10,9 +10,39 @@ let userId = 0;
 // userName will be used in the cookie
 let userName = "";
 
+
+
+let loginForm = document.getElementById("login-form");
+
+	loginForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+
+		let userName = document.getElementById("user").value;
+    	let password = document.getElementById("password").value;
+
+		console.log(
+			`This form has a username of ${userName.value} and password of ${password.value}`
+		);
+
+		window.location.href = "contact.html";
+
+		// if (username.value == "" || password.value == "") {
+		// 	// throw error
+		// } else {
+		// // perform operation with form input
+		// }
+
+	}
+
+
+
+
+
 function testConnect() {
 	window.location.href = "contact.html";
 }
+
+
 
 function doLogin() {
     userId = 0;
