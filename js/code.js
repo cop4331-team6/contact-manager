@@ -208,12 +208,11 @@ function createContact() {
     let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
 	let birthday = document.getElementById("birthday").value;
-    // let phoneNumber = document.getElementById("phoneNumber").value;
+    let phoneNumber = document.getElementById("phoneNumber").value;
 
 	document.getElementById("addResult").innerHTML = "";
 
-	// let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
-	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday};
+	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/AddContact.' + extension;
@@ -273,12 +272,11 @@ function deleteContact() {
     let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
 	let birthday = document.getElementById("birthday").value;
-    // let phoneNumber = document.getElementById("phoneNumber").value;
+    let phoneNumber = document.getElementById("phoneNumber").value;
 
 	document.getElementById("deleteResult").innerHTML = "";
 
-	// let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
-	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday};
+	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/DeleteContact.' + extension;
