@@ -17,7 +17,7 @@ function doLogin() {
     let userName = document.getElementById("userName").value;
     let password = document.getElementById("password").value;
 
-    document.getElementById("loginResult").innerHTML = "";
+    // document.getElementById("loginResult").innerHTML = "";
 
 	// !!!
     let toBeSent = {Username:userName,Password:password};
@@ -51,7 +51,7 @@ function doLogin() {
 		
 				if( userId < 1 )
 				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 				
@@ -142,7 +142,7 @@ function doSignUp() {
     let userName = document.getElementById("userName").value;
     let password = document.getElementById("password").value;
 
-    document.getElementById("signUpResult").innerHTML = "";
+    // document.getElementById("signUpResult").innerHTML = "";
 
 	// !!!
     let toBeSent = {Username:userName,Password:password};
@@ -176,7 +176,7 @@ function doSignUp() {
 		
 				if( userId < 1 )
 				{		
-					document.getElementById("signUpResult").innerHTML = "Sign Up Unsuccessful";
+					// document.getElementById("signUpResult").innerHTML = "Sign Up Unsuccessful";
 					return;
 				}
 				
