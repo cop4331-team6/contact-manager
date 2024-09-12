@@ -14,12 +14,15 @@
     // TODO: Or just store the password in the cookie (maybe hash it first and do some funny business) and send the password every Contact api call.
 
     $UserID = $inData["UserID"];
+    $search = $inData["search"];
 
     $stmt = $conn->prepare("SELECT Contacts.ContactID, Contacts.firstName, Contacts.lastName, Contacts.email, Contacts.phoneNumber, Contacts.birthday FROM Contacts " .
                             "LEFT JOIN Connections ON Contacts.ContactID = Connections.ContactID " .
-                            "WHERE Connections.UserID = ?");
+                            "WHERE Connections.UserID = ? " .
+                            "AND UPPER(CONCAT(Contacts.firstName, ' ', Contacts.lastName, ' ', Contacts.email, ' ', Contacts.phoneNumber, ' ', Contacts.birthday)) " . 
+                            "LIKE CONCAT('%', UPPER(?), '%')");
     // Parameterized SQL queries for ease of use and security.
-    $stmt->bind_param("s", $UserID);
+    $stmt->bind_param("ss", $UserID, $search);
     $stmt->execute();
     $row = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
