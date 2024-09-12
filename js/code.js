@@ -16,15 +16,31 @@ function testConnect() {
 
 function doLogin() {
     userId = 0;
+
+	let loginForm = document.getElementById("login-form");
+
+	loginForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+
+		let userName = document.getElementById("user").value;
+    	let password = document.getElementById("password").value;
+
+		console.log(
+			`This form has a username of ${userName.value} and password of ${password.value}`
+		);
+
+		window.location.href = "contact.html";
+
+		// if (username.value == "" || password.value == "") {
+		// 	// throw error
+		// } else {
+		// // perform operation with form input
+		// }
+
+	}
     
-    // getElementById values are subject to change depending on frontend naming convention
-    let userName = document.getElementById("user").value;
-    let password = document.getElementById("password").value;
-    window.location.href = "checkerror.html";
-
-
+    
     // document.getElementById("loginResult").innerHTML = "";
-
 	// !!!
     let toBeSent = {Username:userName,Password:password};
     let jsonToBeSent = JSON.stringify(toBeSent);
