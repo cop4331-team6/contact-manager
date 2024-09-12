@@ -2,45 +2,114 @@
 <html lang="en">
 
 <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Team 6 Contact Manager</title>
-      <link rel="stylesheet" href="style.css" type="text/css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
       <div class="main">
-            <h1>Contact Manager</h1>
-            <h3>Enter your username and password</h3>
-            <form action="">
-                  <label for="first">
-                        Username:
-                  </label>
-                  <input type="text" 
-                         id="first" 
-                         name="first" 
-                         placeholder="Enter your Username" required>
+            <form id="login-form" class="login-form">
+                  <div class="form-header">
+                        <h1>Login</h1>
+                        <h3>Enter your username and password</h3>
+                  </div>
 
-                  <label for="password">
-                        Password:
-                  </label>
-                  <input type="password"
-                         id="password" 
-                         name="password"
-                         placeholder="Enter your Password" required>
+                  <div class="form-group">
+                        <label for="first">Username:</label>
+                        <div class="input-container">
+                              <input type="text" id="first" name="a" placeholder="Enter your Username" required>
+                              <i class='bx bxs-user'></i>
+                        </div>
+                  </div>
+
+                  <div class="form-group">
+                        <label for="password">Password:</label>
+                        <div class="input-container">
+                              <input type="password" id="password" name="b" placeholder="Enter your Password" required>
+                              <i class='bx bxs-lock-alt'></i>
+                        </div>
+                  </div>
 
                   <div class="wrap">
-                        <button type="submit">
-                              Login
-                        </button>
+                        <button type="submit">Login</button>
                   </div>
             </form>
-            <p>No account yet? 
-                  <a href="#" class="create-link">
-                        Create an account
-                  </a>
-            </p>
-      </div>
-</body>
 
+            <!-- sign up -->
+            <form id="signup-form" class="signup-form">
+                  <div class="form-header">
+                        <h1>Sign Up</h1>
+                        <h3>Create your account</h3>
+                  </div>
+
+                  <div class="form-group">
+                        <label for="first">Username:</label>
+                        <div class="input-container">
+                              <input type="text" id="first" name="a" placeholder="Create Username" required>
+                              <i class='bx bxs-user'></i>
+                        </div>
+                  </div>
+
+                  <div class="form-group">
+                        <label for="password">Password:</label>
+                        <div class="input-container">
+                              <input type="password" id="password" name="b" placeholder="Create Password" required>
+                              <i class='bx bxs-lock-alt'></i>
+                        </div>
+                  </div>
+
+                  <div class="form-group">
+                        <label for="password">Confirm Password:</label>
+                        <div class="input-container">
+                              <input type="password" id="password" name="b" placeholder="Confirm Password" required>
+                              <i class='bx bxs-lock-alt'></i>
+                        </div>
+                  </div>
+
+                  <div class="wrap">
+                        <button type="submit">Sign Up</button>
+                  </div>
+            </form>
+            <!-- toggle Links -->
+            <div class="create-link">
+                  <p id="create-account-text">Don't have an account yet? 
+                        <a href="#" id="create-account-link">Create an account</a>
+                  </p>
+                  <p id="already-have-account-text" style="display:none;">Already have an account? 
+                        <a href="#" id="login-link">Login here</a>
+                  </p>
+            </div>
+
+      </div>
+      <script>
+            //get elements
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const createAccountLink = document.getElementById('create-account-link');
+            const loginLink = document.getElementById('login-link');
+            const createAccountText = document.getElementById('create-account-text');
+            const alreadyHaveAccountText = document.getElementById('already-have-account-text');
+    
+            //show sign up form on click
+            createAccountLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                createAccountText.style.display = 'none';
+                alreadyHaveAccountText.style.display = 'block';
+            });
+    
+            //show login form on click
+            loginLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                signupForm.style.display = 'none';
+                loginForm.style.display = 'block';
+                createAccountText.style.display = 'block';
+                alreadyHaveAccountText.style.display = 'none';
+            });
+        </script>
+</body>
 </html>
