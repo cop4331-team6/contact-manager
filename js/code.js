@@ -6,26 +6,21 @@
 const urlBase = '/LAMPAPI';
 const extension = 'php';
 
-let userId = 0;
 // userName will be used in the cookie
-let userName = "";
 
 function testConnect() {
 	window.location.href = "contact.html";
 }
 
 function doLogin() {
-    userId = 0;
     
     // getElementById values are subject to change depending on frontend naming convention
-    let userName = document.getElementById("user").value;
-    let password = document.getElementById("password").value;
-    window.location.href = "checkerror.html";
+	let userName = document.querySelector("#login-form").querySelector("#user").value;
+    let password = document.querySelector("#login-form").querySelector("#password").value;
 
 
     // document.getElementById("loginResult").innerHTML = "";
 
-	// !!!
     let toBeSent = {Username:userName,Password:password};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
@@ -53,34 +48,34 @@ function doLogin() {
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
 				// After converted, can assign id
 				// !!!
-				userId = jsonObject.UserID;
 		
-				if( userId < 1 )
+				if(jsonObject.error)
 				{		
+					console.log("Error!")
 					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					// For debugging
 					return;
 				}
 				
 				// Save data to a cookie
-				saveCookie();
+				saveCookie(jsonObject.Username, jsonObject.UserID);
 				
 				// Take user to the page after successfully logging in
 				window.location.href = "contact.html";
 			}
 		};
         // SEND REQUEST
-		xhr.send(jsonPayload);
+		xhr.send(jsonToBeSent);
 		// Between sending the request and hearing back, the server determines if the login is successful
 		// See Login.php
     }
     catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		// document.getElementById("loginResult").innerText = err.message;
 	}
 }
 
-function saveCookie()
+function saveCookie(userName, userId)
 {
 	// cookie valid for 30 minutes. Logout after 30 min of not using site.
 	// shorter time is more secure, but we changed it from 20
@@ -143,19 +138,17 @@ function doLogout()
 
 // Sign up very similar to log in may need to modify
 function doSignUp() {
-    userId = 0;
-    
     // getElementById values are subject to change depending on frontend naming convention
-    let userName = document.getElementById("user").value;
-    let password = document.getElementById("password").value;
+	let userName = document.querySelector("#login-form").querySelector("#user").value;
+    let password = document.querySelector("#login-form").querySelector("#password").value;
 
-    // document.getElementById("signUpResult").innerHTML = "";
 
-	// !!!
+    // document.getElementById("loginResult").innerHTML = "";
+
     let toBeSent = {Username:userName,Password:password};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
-    let url = urlBase + '/SignUp.' + extension;
+    let url = urlBase + '/Login.' + extension;
 
     // SET UP HTTP REQUEST
 	let xhr = new XMLHttpRequest();
@@ -179,27 +172,30 @@ function doSignUp() {
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
 				// After converted, can assign id
 				// !!!
-				userId = jsonObject.UserID;
 		
-				if( userId < 1 )
+				if(jsonObject.error)
 				{		
-					// document.getElementById("signUpResult").innerHTML = "Sign Up Unsuccessful";
+					console.log("Error!")
+					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					// For debugging
 					return;
 				}
 				
 				// Save data to a cookie
-				saveCookie();
+				saveCookie(jsonObject.UserName, jsonObject.UserID);
 				
-				// Take user to the page after successfully signing up
+				// Take user to the page after successfully logging in
 				window.location.href = "contact.html";
 			}
 		};
         // SEND REQUEST
-		xhr.send(jsonPayload);
+		xhr.send(jsonToBeSent);
+		// Between sending the request and hearing back, the server determines if the login is successful
+		// See Login.php
     }
     catch(err)
 	{
-		document.getElementById("signUpResult").innerHTML = err.message;
+		// document.getElementById("loginResult").innerText = err.message;
 	}
 }
 
@@ -258,7 +254,7 @@ function createContact() {
     }
     catch(err)
 	{
-		document.getElementById("addResult").innerHTML = err.message;
+		document.getElementById("addResult").innerText = err.message;
 	}
 }
 
@@ -312,6 +308,6 @@ function deleteContact() {
     }
     catch(err)
 	{
-		document.getElementById("deleteResult").innerHTML = err.message;
+		document.getElementById("deleteResult").innerText = err.message;
 	}
 }
