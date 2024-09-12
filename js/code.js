@@ -6,8 +6,6 @@
 const urlBase = '/LAMPAPI';
 const extension = 'php';
 
-// userName will be used in the cookie
-
 function testConnect() {
 	window.location.href = "contact.html";
 }
@@ -17,9 +15,6 @@ function doLogin() {
     // getElementById values are subject to change depending on frontend naming convention
 	let userName = document.querySelector("#login-form").querySelector("#user").value;
     let password = document.querySelector("#login-form").querySelector("#password").value;
-
-
-    // document.getElementById("loginResult").innerHTML = "";
 
     let toBeSent = {Username:userName,Password:password};
     let jsonToBeSent = JSON.stringify(toBeSent);
@@ -46,14 +41,12 @@ function doLogin() {
 			{
 				// Convert JSON string to JS object
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
-				// After converted, can assign id
-				// !!!
 		
 				if(jsonObject.error)
 				{		
-					console.log("Error!")
+					// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
+					document.location.href = "checkerror.html";
 					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-					// For debugging
 					return;
 				}
 				
@@ -71,6 +64,8 @@ function doLogin() {
     }
     catch(err)
 	{
+		// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
+		document.location.href = "checkerror.html";
 		// document.getElementById("loginResult").innerText = err.message;
 	}
 }
@@ -92,6 +87,7 @@ function saveCookie(userName, userId)
 
 function readCookie()
 {
+	// TODO: Jason Yau 09/12/2024: Will need to fix this.
 	userId = -1;
 	// all cookies in one string
 	let data = document.cookie;
@@ -123,8 +119,6 @@ function readCookie()
 
 function doLogout()
 {
-	userId = 0;
-	userName = "";
 	// setting time to past ensures deletion of the cookie
 	// my guess is we don't need additional lines bc we set lastname and userId to blank
 	// just need one to set time to past
@@ -138,17 +132,20 @@ function doLogout()
 
 // Sign up very similar to log in may need to modify
 function doSignUp() {
-    // getElementById values are subject to change depending on frontend naming convention
-	let userName = document.querySelector("#login-form").querySelector("#user").value;
-    let password = document.querySelector("#login-form").querySelector("#password").value;
+	let userName = document.querySelector("#signup-form").querySelector("#user").value;
+    let password = document.querySelector("#signup-form").querySelector("#password").value;
+	let confirmPassword = document.querySelector("#signup-form").querySelector("#confirmPassword").value;
 
+	if (password !== confirmPassword) {
+		// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
+		document.location.href = "checkerror.html";
+	}
 
-    // document.getElementById("loginResult").innerHTML = "";
 
     let toBeSent = {Username:userName,Password:password};
     let jsonToBeSent = JSON.stringify(toBeSent);
 
-    let url = urlBase + '/Login.' + extension;
+    let url = urlBase + '/SignUp.' + extension;
 
     // SET UP HTTP REQUEST
 	let xhr = new XMLHttpRequest();
@@ -175,9 +172,9 @@ function doSignUp() {
 		
 				if(jsonObject.error)
 				{		
-					console.log("Error!")
+					// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
+					document.location.href = "checkerror.html";
 					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-					// For debugging
 					return;
 				}
 				
@@ -195,6 +192,8 @@ function doSignUp() {
     }
     catch(err)
 	{
+		// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
+		document.location.href = "checkerror.html";
 		// document.getElementById("loginResult").innerText = err.message;
 	}
 }
