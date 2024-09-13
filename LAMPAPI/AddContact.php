@@ -53,6 +53,11 @@
 		returnWithError("Could Not Add Connection");
 	}
 
+	$stmt = $conn->prepare("SELECT * FROM Contacts WHERE ContactID=?");
+	$stmt->bind_param("s", $contactID);
+	$stmt->execute();
+	$row = $stmt->get_result()->fetch_assoc();
+	$stmt->close();
 
 	$conn->close();
 
