@@ -5,13 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Dashboard</title>
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
     <div class="container">
-        <div class="sidebar">
-            <h2>Dashboard</h2>
+        <!-- header -->
+        <div class="header">
+            <h2>Contacts</h2>
+            <button class="new-contact">New Contact</button>
+            <button class="refresh">Refresh</button>
+        </div>
+
+        <!-- search -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+
+        <!--- contacts list-->
+        <div class="contact-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- connect front to back for contact list-->
+                        <td>First and Last Name</td>
+                        <td>123-456-7890</td>
+                        <td>test@gmail.com</td>
+                        <td>
+                            <button class="edit-btn">📝</button>
+                            <button class="delete-btn">🗑️</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
