@@ -43,10 +43,8 @@ function doLogin() {
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
 		
 				if(jsonObject.error)
-				{		
-					// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
-					document.location.href = "checkerror.html";
-					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+				{	
+					document.getElementById("login-password-error").innerText = jsonObject.error;
 					return;
 				}
 				
@@ -64,8 +62,9 @@ function doLogin() {
     }
     catch(err)
 	{
+		document.getElementById("login-password-error").innerText = err.message;
 		// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
-		document.location.href = "checkerror.html";
+		// document.location.href = "checkerror.html";
 		// document.getElementById("loginResult").innerText = err.message;
 	}
 }
@@ -137,8 +136,8 @@ function doSignUp() {
 	let confirmPassword = document.querySelector("#signup-form").querySelector("#confirmPassword").value;
 
 	if (password !== confirmPassword) {
-		// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
-		document.location.href = "checkerror.html";
+		document.getElementById("signup-password-error").innerText = "Passwords do not match";
+		return;
 	}
 
 
@@ -172,9 +171,7 @@ function doSignUp() {
 		
 				if(jsonObject.error)
 				{		
-					// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
-					document.location.href = "checkerror.html";
-					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("signup-password-error").innerText = jsonObject.error;
 					return;
 				}
 				
@@ -192,9 +189,7 @@ function doSignUp() {
     }
     catch(err)
 	{
-		// TODO: Jason Yau 09/12/2024: Will need to fix this. Probably want better error handling, I just did this to temp test.
-		document.location.href = "checkerror.html";
-		// document.getElementById("loginResult").innerText = err.message;
+		document.getElementById("signup-password-error").innerText = err.message;
 	}
 }
 

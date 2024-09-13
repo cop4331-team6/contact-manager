@@ -14,8 +14,8 @@
     $password = $inData["Password"];
 
     if (!preg_match("/[\w-]{3,15}/", $username)) {
-		returnWithError("Username should be between 3-15 characters, containing only letters, numbers, - and _");
-	} else if (strlen($password) === 0) {
+        returnWithError("Username should be between 3-15 characters, containing only letters, numbers, - and _");
+    } else if (strlen($password) === 0) {
         returnWithError("Password needs to be at least one character");
     }
 
