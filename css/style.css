@@ -140,3 +140,10 @@ button:hover {
 .signup-form{
     display: none;
 }
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
