@@ -100,24 +100,54 @@ body {
 .contact-list table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .contact-list th, .contact-list td {
+<<<<<<< HEAD
     padding: 15px; 
     text-align: center;
+=======
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+>>>>>>> 9f3c30c1c93e784627629c7a2f4a294babb34ddd
     border-bottom: 1px solid #2857a8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contact-list th {
     background-color: #1c54cf;
     color: white;
+    text-align: left;
 }
 
 .contact-list td {
     color: white;
 }
 
+<<<<<<< HEAD
 /* logout */
+=======
+.contact-list th:nth-child(1), .contact-list td:nth-child(1) {
+    width: 40%; /* Name column */
+}
+
+.contact-list th:nth-child(2), .contact-list td:nth-child(2) {
+    width: 20%; /* Phone column */
+}
+
+.contact-list th:nth-child(3), .contact-list td:nth-child(3) {
+    width: 25%; /* Email column */
+}
+
+.contact-list th:nth-child(4), .contact-list td:nth-child(4) {
+    width: 15%; /* Actions column */
+}
+
+>>>>>>> 9f3c30c1c93e784627629c7a2f4a294babb34ddd
 .logout-btn{
     background-color: #1c54cf;
     color: white;
@@ -133,4 +163,8 @@ body {
 
 .logout-btn:hover {
     background-color: #3765d1;
+<<<<<<< HEAD
 }    
+=======
+}
+>>>>>>> 9f3c30c1c93e784627629c7a2f4a294babb34ddd
