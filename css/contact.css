@@ -100,6 +100,7 @@ body {
 .contact-list table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .contact-list th, .contact-list td {
@@ -122,26 +123,18 @@ body {
     color: white;
 }
 
-/* Proper column alignment */
-.contact-list table {
-    width: 100%; 
-    table-layout: fixed;
+.contact-list th:nth-child(1), .contact-list td:nth-child(1) {
+    width: 30%; /* Name column */
 }
 
-/* Adjust column widths */
-.contact-list td:nth-child(1) {
-    width: 30%; /* Name */
+.contact-list th:nth-child(2), .contact-list td:nth-child(2) {
+    width: 20%; /* Phone column */
 }
 
-.contact-list td:nth-child(2) {
-    width: 20%; /* Phone */
-}
-
-.contact-list td:nth-child(3) {
-    width: 30%; /* Email */
+.contact-list th:nth-child(3), .contact-list td:nth-child(3) {
+    width: 30%; /* Email column */
 }
 
 .contact-list td:nth-child(4) {
     width: 20%; /* Actions */
 }
-
