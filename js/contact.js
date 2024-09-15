@@ -140,7 +140,7 @@ function retrieveContacts() {
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
 				if(jsonObject.error)
 				{		
-					alert("Error in loading contacts!");
+					alert(`Error in loading contacts: ${jsonObject.error}`);
 					return;
 				}
 
@@ -150,12 +150,10 @@ function retrieveContacts() {
 		};
         // SEND REQUEST
 		xhr.send(jsonToBeSent);
-		// Between sending the request and hearing back, the server determines if the login is successful
-		// See Login.php
     }
     catch(err)
 	{
-		document.getElementById("signup-password-error").innerText = err.message;
+		alert(`Error in loading contacts: ${err.message}`);
 	}
 }
 
@@ -186,19 +184,21 @@ function displayContacts(contactsJson) {
 }
 
 function deleteContact(e) {
-    // Get the ContactID to delete!
-    const contactId = e.value;
-    console.log(contactId);
 	// Delete button: should just click it, ask for confirmation, then delete
+
+	if (e.innerText !== "Confirm") {
+		e.innerText = "Confirm";
+		return;
+	}
+
+	// Get the ContactID to delete!
+    const contactId = e.value;
 
 	// Read the info of the contact to delete
 	let userId = readCookie().userId;
 	
-
-	document.getElementById("deleteResult").innerHTML = "";
-
 	let toBeSent = {userId:userId, contactId:contactId};
-    	let jsonToBeSent = JSON.stringify(toBeSent);
+    let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/DeleteContact.' + extension;
 
@@ -215,20 +215,19 @@ function deleteContact(e) {
 			{
 				// Convert JSON string to JS object
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
-				// After converted, can assign id
-				message = jsonObject.message;
-		
-				document.getElementById("deleteResult").innerHTML = message;
-			}
+				if (jsonObject.error) {
+					alert(`Error in deleting contact: ${jsonObject.error}`);
+				}
 
-			retrieveContacts();
+				retrieveContacts();
+			}
 		};
         // SEND REQUEST
-		xhr.send(jsonPayload);
+		xhr.send(jsonToBeSent);
     }
     catch(err)
 	{
-		document.getElementById("deleteResult").innerText = err.message;
+		alert(`Error in deleting contact: ${err.message}`);
 	}
 }
 
