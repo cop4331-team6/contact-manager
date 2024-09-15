@@ -116,7 +116,7 @@ body {
 .contact-list th {
     background-color: #1c54cf;
     color: white;
-    text-align: center;
+    text-align: left;
 }
 
 .contact-list td {
@@ -137,4 +137,21 @@ body {
 
 .contact-list th:nth-child(4), .contact-list td:nth-child(4) {
     width: 15%; /* Actions column */
+}
+
+.logout-btn{
+    background-color: #1c54cf;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    bottom: 20px;
+    left: 20px;
+    margin-top: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #3765d1;
 }
