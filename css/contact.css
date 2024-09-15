@@ -24,7 +24,7 @@ body {
     color: white;
 }
 
-/* Header */
+/* header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -52,7 +52,7 @@ body {
     background-color: #3765d1;
 }
 
-/* Edit/delete buttons */
+/* edit/delete buttons */
 .edit-btn, .delete-btn {
     padding: 8px 12px;
     font-size: 14px;
@@ -72,7 +72,7 @@ body {
 }
 
 .delete-btn {
-    background-color: #f44336; /* Red for Delete */
+    background-color: #f44336;
     color: white;
     margin-left: 10px;
 }
@@ -81,7 +81,7 @@ body {
     background-color: #e53935;
 }
 
-/* Search bar */
+/* search */
 .search-bar {
     margin-bottom: 20px;
 }
@@ -96,15 +96,15 @@ body {
     font-size: 16px;
 }
 
-/* Contacts list */
+/* contacts list */
 .contact-list table {
     width: 100%;
     border-collapse: collapse;
 }
 
 .contact-list th, .contact-list td {
-    padding: 15px;
-    text-align: left;
+    padding: 15px; 
+    text-align: center;
     border-bottom: 1px solid #2857a8;
 }
 
@@ -117,3 +117,20 @@ body {
     color: white;
 }
 
+/* logout */
+.logout-btn{
+    background-color: #1c54cf;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    bottom: 20px;
+    left: 20px;
+    margin-top: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #3765d1;
+}    
