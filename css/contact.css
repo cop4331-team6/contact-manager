@@ -105,15 +105,43 @@ body {
 .contact-list th, .contact-list td {
     padding: 15px;
     text-align: left;
+    vertical-align: middle;
     border-bottom: 1px solid #2857a8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contact-list th {
     background-color: #1c54cf;
     color: white;
+    text-align: center;
 }
 
 .contact-list td {
     color: white;
+}
+
+/* Proper column alignment */
+.contact-list table {
+    width: 100%; 
+    table-layout: fixed;
+}
+
+/* Adjust column widths */
+.contact-list td:nth-child(1) {
+    width: 30%; /* Name */
+}
+
+.contact-list td:nth-child(2) {
+    width: 20%; /* Phone */
+}
+
+.contact-list td:nth-child(3) {
+    width: 30%; /* Email */
+}
+
+.contact-list td:nth-child(4) {
+    width: 20%; /* Actions */
 }
 
