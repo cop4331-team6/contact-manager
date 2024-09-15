@@ -187,22 +187,18 @@ function displayContacts(contactsJson) {
 
 function deleteContact(e) {
     // Get the ContactID to delete!
-    const ContactID = e.value;
-    console.log(ContactID);
+    const contactId = e.value;
+    console.log(contactId);
 	// Delete button: should just click it, ask for confirmation, then delete
 
 	// Read the info of the contact to delete
-	let userId = readCookie().userId
-	let firstName = document.getElementById("firstName").value;
-    let lastName = document.getElementById("lastName").value;
-	let email = document.getElementById("email").value;
-	let birthday = document.getElementById("birthday").value;
-    let phoneNumber = document.getElementById("phoneNumber").value;
+	let userId = readCookie().userId;
+	
 
 	document.getElementById("deleteResult").innerHTML = "";
 
-	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
-    let jsonToBeSent = JSON.stringify(toBeSent);
+	let toBeSent = {userId:userId};
+    	let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/DeleteContact.' + extension;
 
