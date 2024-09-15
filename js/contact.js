@@ -165,6 +165,9 @@ function displayContacts(contactsJson) {
     contactListBody.innerHTML = "";
     contactListBody.appendChild(contactRowTemplate);
     contactRowTemplate.style.display = 'none';
+	contactsJson.Contacts.sort((a, b) => {
+		return (a.firstName+a.lastName).localeCompare(b.firstName+b.lastName);
+	})
     // console.log(contactsJson);
     for (const contact of contactsJson.Contacts) {
         const currContactRow = contactRowTemplate.cloneNode(true);
