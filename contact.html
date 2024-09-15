@@ -14,8 +14,8 @@
         <!-- header -->
         <div class="header">
             <h2>Contacts</h2>
-            <button class="new-contact">New Contact</button>
-            <button class="refresh">Refresh</button>
+            <button class="new-contact" onclick="createContact()">Create Contact</button>
+            <button class="refresh" onclick="retrieveContacts()">Refresh</button>
         </div>
 
         <!-- search -->
@@ -33,15 +33,14 @@
                         <th>Email</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <!-- connect front to back for contact list-->
-                        <td>First and Last Name</td>
-                        <td>123-456-7890</td>
-                        <td>test@gmail.com</td>
+                <tbody id="contact-list-body">
+                    <tr id="contact-row">
+                        <td id="contact-name">First and Last Name</td>
+                        <td id="contact-phone">123-456-7890</td>
+                        <td id="contact-email">test@gmail.com</td>
                         <td>
-                            <button class="edit-btn">📝</button>
-                            <button class="delete-btn">🗑️</button>
+                            <button id="edit-contact" class="edit-btn" onclick="updateContact()">📝</button>
+                            <button id="delete-contact"class="delete-btn" onclick="deleteContact()">🗑️</button>
                         </td>
                     </tr>
                 </tbody>
