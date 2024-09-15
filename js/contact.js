@@ -92,7 +92,7 @@ function createContact() {
 				}
 				
 				// !!! Maybe change what happens after. Maybe go back by clicking x button
-				document.getElementById("addResult").innerHTML = "Contact Added!"
+				document.getElementById("addResult").innerHTML = "Contact Added!";
 			}
 		};
         // SEND REQUEST
@@ -107,7 +107,7 @@ function createContact() {
 function updateContact(e) {
     const ContactID = e.value;
     // Get the ContactID to update!
-    console.log(ContactID)
+    console.log(ContactID);
 }
 
 function retrieveContacts() {
@@ -140,7 +140,7 @@ function retrieveContacts() {
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
 				if(jsonObject.error)
 				{		
-					alert("Error in loading contacts!")
+					alert("Error in loading contacts!");
 					return;
 				}
 
@@ -218,8 +218,10 @@ function deleteContact(e) {
 				// After converted, can assign id
 				message = jsonObject.message;
 		
-				document.getElementById("deleteResult").innerHTML = message
+				document.getElementById("deleteResult").innerHTML = message;
 			}
+
+			retrieveContacts();
 		};
         // SEND REQUEST
 		xhr.send(jsonPayload);
