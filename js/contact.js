@@ -176,7 +176,7 @@ function displayContacts(contactsJson) {
         currContactRow.querySelector("#contact-email").innerText = contact.email;
         currContactRow.querySelector("#edit-contact").value = contact.ContactID;
         currContactRow.querySelector("#delete-contact").value = contact.ContactID;
-        currContactRow.style.display = 'inline';
+        currContactRow.style.display = 'block';
         contactListBody.appendChild(currContactRow);
         // console.log(currContactRow);
     }
