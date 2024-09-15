@@ -52,6 +52,35 @@ body {
     background-color: #3765d1;
 }
 
+/* Edit/delete buttons */
+.edit-btn, .delete-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336; /* Red for Delete */
+    color: white;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #e53935;
+}
+
 /* Search bar */
 .search-bar {
     margin-bottom: 20px;
