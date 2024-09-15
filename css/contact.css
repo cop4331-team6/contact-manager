@@ -124,17 +124,13 @@ body {
 }
 
 .contact-list th:nth-child(1), .contact-list td:nth-child(1) {
-    width: 100%; /* Name column */
+    width: 50%; /* Name column */
 }
 
 .contact-list th:nth-child(2), .contact-list td:nth-child(2) {
-    width: 40%; /* Phone column */
+    width: 25%; /* Phone column */
 }
 
 .contact-list th:nth-child(3), .contact-list td:nth-child(3) {
-    width: 40%; /* Email column */
-}
-
-.contact-list td:nth-child(4) {
-    width: 20%; /* Actions */
+    width: 25%; /* Email column */
 }
