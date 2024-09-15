@@ -197,7 +197,7 @@ function deleteContact(e) {
 
 	document.getElementById("deleteResult").innerHTML = "";
 
-	let toBeSent = {userId:userId};
+	let toBeSent = {userId:userId, contactId:contactId};
     	let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/DeleteContact.' + extension;
