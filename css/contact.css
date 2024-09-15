@@ -128,11 +128,11 @@ body {
 }
 
 .contact-list th:nth-child(2), .contact-list td:nth-child(2) {
-    width: 20%; /* Phone column */
+    width: 40%; /* Phone column */
 }
 
 .contact-list th:nth-child(3), .contact-list td:nth-child(3) {
-    width: 30%; /* Email column */
+    width: 40%; /* Email column */
 }
 
 .contact-list td:nth-child(4) {
