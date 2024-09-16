@@ -48,6 +48,8 @@ function doLogin() {
 				
 				// Take user to the page after successfully logging in
 				window.location.href = "contact.html";
+			} else if (this.readyState == 4) {
+				document.getElementById("login-password-error").innerText = `Server error: ${this.status}`;
 			}
 		};
         // SEND REQUEST
@@ -126,6 +128,8 @@ function doSignUp() {
 				
 				// Take user to the page after successfully logging in
 				window.location.href = "contact.html";
+			} else if (this.readyState == 4) {
+				document.getElementById("signup-password-error").innerText = `Server error: ${this.status}`;
 			}
 		};
         // SEND REQUEST
