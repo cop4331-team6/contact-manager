@@ -152,8 +152,34 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    width: 80%;
+    width: 90%;
     max-width: 500px;
+    text-align: center;
+    transition: transform 0.3 ease, box-shadow 0.3s ease; /* Hover effect */
+}
+
+.popup button {
+    width: 70%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: poiner;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.popup button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.popup:hover {
+    transform: translateY(-5x);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* show popup when class is used */
@@ -163,6 +189,34 @@ body {
 
 .popup-content {
     color: black;
+}
+
+.popup-content h2 {
+    margin-bottom: 15px;
+}
+
+/* input group for popup */
+label {
+    display: block;
+    color: #34495e;
+    font-weight: 575;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+input {
+    width: 70%;
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    background-color: #ecf0f1;
+    outline: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    border-color: #3498db;
 }
 
 .popup .close {
@@ -195,12 +249,5 @@ body {
 /* shows overlay when class is used */
 .popup-overlay.active {
     display: block;
-}
-
-.popup label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    display: block;
-    color: #666;
 }
 
