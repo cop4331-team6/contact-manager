@@ -18,7 +18,7 @@
             <div class="button-group">
                 <!-- add onclick to send to popup -->
                 <button class="new-contact" onclick="">Create Contact</button>
-                <button class="refresh" onclick="">Refresh</button>
+                <button class="refresh" onclick="retrieveContacts()">Refresh</button>
             </div>
         </div>
 
@@ -53,9 +53,9 @@
         </div>
 
         <!-- Create Contact Form -->
-        <div id="createContactForm" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
+        <div id="createContactPopup" class="popup">
+            <div class="popup-content">
+                <a href="#" class="close">&times;</a>
                 <h2>Create Contact</h2>
                 <form>
                     <div class="input-group">
@@ -81,9 +81,9 @@
         </div>
 
         <!-- Edit Contact Form -->
-        <div id="editContactForm" class="modal"></div>
-            <div class="modal-content">
-                <span class="close">&times;</span>
+        <div id="editContactPopup" class="popup">
+            <div class="popup-content">
+                <a href="#" class="close">&times;</a>
                 <h2>Edit Contact</h2>
                 <form>
                     <div class="input-group">
@@ -102,7 +102,7 @@
                         <label for="phone-number">Phone Number</label>
                         <input type="text" id="phoneNumber" placeholder="Enter phone number">
 
-                        <button type="button" onclick="updateContact()">Save</button>
+                        <button type="button" onclick="updateContact(this)">Save</button>
                     </div>
                 </form>
             </div>
