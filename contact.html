@@ -16,8 +16,9 @@
             <h2>Contacts</h2>
             <!-- class for buttons -->
             <div class="button-group">
-                <button class="new-contact" onclick="createContact()">Create Contact</button>
-                <button class="refresh" onclick="retrieveContacts()">Refresh</button>
+                <!-- add onclick to send to popup -->
+                <button class="new-contact" onclick="">Create Contact</button>
+                <button class="refresh" onclick="">Refresh</button>
             </div>
         </div>
 
@@ -50,6 +51,63 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Create Contact Form -->
+        <div id="createContactForm" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Create Contact</h2>
+                <form>
+                    <div class="input-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="firstName" placeholder="Enter first name">
+
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Enter last name">
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter email">
+                    
+                        <label for="birthday">Birthday</label>
+                        <input type="date" id="birthday" placeholder="Enter birthday">
+                    
+                        <label for="phone-number">Phone Number</label>
+                        <input type="text" id="phoneNumber" placeholder="Enter phone number">
+
+                        <button type="button" onclick="createContact()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Edit Contact Form -->
+        <div id="editContactForm" class="modal"></div>
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Contact</h2>
+                <form>
+                    <div class="input-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="firstName" placeholder="Enter first name">
+
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Enter last name">
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter email">
+                    
+                        <label for="birthday">Birthday</label>
+                        <input type="date" id="birthday" placeholder="Enter birthday">
+                    
+                        <label for="phone-number">Phone Number</label>
+                        <input type="text" id="phoneNumber" placeholder="Enter phone number">
+
+                        <button type="button" onclick="updateContact()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <button class="logout-btn" button type="submit" onclick="doLogout();">Logout</button>
     </div>
 </body>
