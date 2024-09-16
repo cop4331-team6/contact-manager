@@ -55,7 +55,7 @@ function createContact() {
 	// Take in the new contact information
 	let userId = readCookie().userId;
 	
-	const contactForm = document.getElementById("createContactForm");
+	const contactForm = document.getElementById("createContactPopup");
 
 	let firstName = contactForm.querySelector("#firstName").value;
 	let lastName = contactForm.querySelector("#lastName").value;
@@ -92,8 +92,10 @@ function createContact() {
 				if (jsonObject.error) {
 					alert(`Error in creating contact: ${jsonObject.error}`);
 				}
-				
+				closePopup('createContactPopup');
 				retrieveContacts();
+			} else if (this.readyState == 4) {
+				alert(`Error: ${this.status}`);
 			}
 
 			
@@ -107,16 +109,86 @@ function createContact() {
 	}
 }
 
-function updateContact(e) {
+function initiateEditContactPopup(e) {
+	// Get the previous values from the HTML.
     const ContactID = e.value;
-    // Get the ContactID to update!
-    console.log(ContactID);
+	const currContactRow = document.getElementById(`contact-row-${ContactID}`);
+	const firstName = currContactRow.querySelector("#contact-name").getAttribute("firstName");
+	const lastName = currContactRow.querySelector("#contact-name").getAttribute("lastName");
+	const phoneNumber = currContactRow.querySelector("#contact-phone").innerText;
+	const email = currContactRow.querySelector("#contact-email").innerText;
+
+	// Set the previous values in the input popup.
+	const editContactPopup = document.getElementById("editContactPopup");
+	editContactPopup.querySelector("#firstName").value = firstName || "";
+	editContactPopup.querySelector("#lastName").value = lastName || "";
+	editContactPopup.querySelector("#email").value = email || "";
+	editContactPopup.querySelector("#birthday").value = "1969-04-20";
+	editContactPopup.querySelector("#phoneNumber").value = phoneNumber || "";
+	editContactPopup.querySelector("#save-button").value = ContactID;
+	openPopup("editContactPopup");
+}
+
+function updateContact(e) {
+	const ContactID = e.value;
+	const UserID = readCookie().userId;
+	const editContactPopup = document.getElementById("editContactPopup");
+	const firstName = editContactPopup.querySelector("#firstName").value;
+	const lastName = editContactPopup.querySelector("#lastName").value;
+	const email = editContactPopup.querySelector("#email").value;
+	const birthday = editContactPopup.querySelector("#birthday").value;
+	const phoneNumber = editContactPopup.querySelector("#phoneNumber").value;
+
+	let toBeSent = {
+						ContactID: ContactID,
+						UserID: UserID, 
+						firstName: firstName, 
+						lastName: lastName, 
+						email: email, 
+						birthday: birthday, 
+						phoneNumber: phoneNumber
+					};
+    let jsonToBeSent = JSON.stringify(toBeSent);
+
+	let url = urlBase + '/UpdateContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+        // HANDLE RESPONSE
+		xhr.onreadystatechange = function() 
+		{
+			// readyState 4 means complete. Status 200 means successful
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				// Convert JSON string to JS object
+				let jsonObject = JSON.parse( xhr.responseText ); //Response data
+
+				if (jsonObject.error) {
+					alert(`Error in updating contact: ${jsonObject.error}`);
+				}
+				closePopup('editContactPopup');
+				retrieveContacts();
+			} else if (this.readyState == 4) {
+				alert(`Error: ${this.status}`);
+			}
+
+			
+		};
+        // SEND REQUEST
+		xhr.send(jsonToBeSent);
+    }
+    catch(err)
+	{
+		alert(`Error in updating contact: ${err.message}`);
+	}
 }
 
 function retrieveContacts() {
     const UserID = readCookie().userId;
-    const search = document.getElementsByClassName("search-bar")[0].querySelector("input").value;
-    console.log(search);
+    const search = document.getElementById("search").value;
     let toBeSent = {UserID:UserID, search:search};
     let jsonToBeSent = JSON.stringify(toBeSent);
     let url = urlBase + '/RetrieveContacts.' + extension;
@@ -149,6 +221,8 @@ function retrieveContacts() {
 
                 // Display the contacts.
                 displayContacts(jsonObject);
+			} else if (this.readyState == 4) {
+				alert(`Error: ${this.status}`);
 			}
 		};
         // SEND REQUEST
@@ -169,10 +243,12 @@ function displayContacts(contactsJson) {
 	contactsJson.Contacts.sort((a, b) => {
 		return (a.firstName+a.lastName).localeCompare(b.firstName+b.lastName);
 	})
-    // console.log(contactsJson);
     for (const contact of contactsJson.Contacts) {
         const currContactRow = contactRowTemplate.cloneNode(true);
+		currContactRow.id = `contact-row-${contact.ContactID}`;
         currContactRow.querySelector("#contact-name").innerText = `${contact.firstName} ${contact.lastName}`;
+		currContactRow.querySelector("#contact-name").setAttribute("firstName", contact.firstName);
+		currContactRow.querySelector("#contact-name").setAttribute("lastName", contact.lastName);
         // const phoneNumber = `(${contact.phoneNumber.substring(0,3)}) ` +
         //                     `${contact.phoneNumber.substring(3,6)}` +
         //                     `-${contact.phoneNumber.substring(6,10)}`;
@@ -182,7 +258,6 @@ function displayContacts(contactsJson) {
         currContactRow.querySelector("#delete-contact").value = contact.ContactID;
         currContactRow.style.display = "";
         contactListBody.appendChild(currContactRow);
-        // console.log(currContactRow);
     }
 }
 
@@ -223,6 +298,8 @@ function deleteContact(e) {
 				}
 
 				retrieveContacts();
+			} else if (this.readyState == 4) {
+				alert(`Error: ${this.status}`);
 			}
 		};
         // SEND REQUEST
