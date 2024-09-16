@@ -55,7 +55,7 @@
         <!-- Create Contact Form -->
         <div id="createContactPopup" class="popup">
             <div class="popup-content">
-                <a href="#" class="close">&times;</a>
+                <a href="#" class="close" onclick="closePopup('createContactPopup')">&times;</a>
                 <h2>Create Contact</h2>
                 <form>
                     <div class="input-group">
@@ -83,7 +83,7 @@
         <!-- Edit Contact Form -->
         <div id="editContactPopup" class="popup">
             <div class="popup-content">
-                <a href="#" class="close">&times;</a>
+                <a href="#" class="close" onclick="closePopup('editContactPopup')">&times;</a>
                 <h2>Edit Contact</h2>
                 <form>
                     <div class="input-group">
@@ -108,7 +108,24 @@
             </div>
         </div>
 
+        <!-- logout -->
         <button class="logout-btn" button type="submit" onclick="doLogout();">Logout</button>
+
+        <!-- Popup Overlay -->
+        <div id="popupOverlay" class="popup-overlay"></div>
     </div>
+
+    <script>
+        function openPopup(popupId) {
+            document.getElementById(popupId).classList.add('active');
+            document.getElementById('popupOverlay').classList.add('active');
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).classList.remove('active');
+            document.getElementById('popupOverlay').classList.remove('active');
+        }
+    </script>
+
 </body>
 </html>
