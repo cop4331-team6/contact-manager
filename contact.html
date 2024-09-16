@@ -14,9 +14,7 @@
         <!-- header -->
         <div class="header">
             <h2>Contacts</h2>
-            <!-- class for buttons -->
             <div class="button-group">
-                <!-- add onclick to send to popup -->
                 <button class="new-contact" onclick="openPopup('createContactPopup')">Create Contact</button>
                 <button class="refresh" onclick="retrieveContacts()">Refresh</button>
             </div>
@@ -111,10 +109,11 @@
         <!-- logout -->
         <button class="logout-btn" button type="submit" onclick="doLogout();">Logout</button>
 
-        <!-- Popup Overlay -->
+        <!-- popup overlay -->
         <div id="popupOverlay" class="popup-overlay"></div>
     </div>
 
+    <!-- popup funtionality for create and edit button -->
     <script>
         function openPopup(popupId) {
             document.getElementById(popupId).classList.add('active');

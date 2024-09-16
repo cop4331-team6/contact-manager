@@ -140,7 +140,7 @@ body {
     background-color: #5fa2b3;
 }    
 
-/* Hide popups initially */
+/* hide popups initially */
 .popup {
     display: none;
     position: fixed;
@@ -156,7 +156,7 @@ body {
     max-width: 500px;
 }
 
-/* Show popup when the active class is applied */
+/* show popup when class is used */
 .popup.active {
     display: block;
 }
@@ -176,7 +176,11 @@ body {
     cursor: pointer;
 }
 
-/* Overlay (background) */
+.popup .close:hover{
+    color: #e53935;
+}
+
+/* popup overlay */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -188,7 +192,15 @@ body {
     z-index: 999;
 }
 
-/* Show overlay when the active class is applied */
+/* shows overlay when class is used */
 .popup-overlay.active {
     display: block;
 }
+
+.popup label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    color: #666;
+}
+
