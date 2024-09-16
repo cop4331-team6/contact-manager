@@ -6,21 +6,24 @@
 }
 
 body {
-    background-color: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url(../images/image6.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     margin: 0;
 }
 
 .container {
-    background-color: #1b85a0;
+    background: linear-gradient(145deg, #1b85a0, #1e90a5);
     width: 90%;
     height: 90%;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.15);
     color: white;
 }
 
@@ -137,7 +140,7 @@ body {
 }
 
 .logout-btn:hover {
-    background-color: #5fa2b3;
+    background-color: #e53935;
 }    
 
 /* hide popups initially */
