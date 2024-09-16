@@ -54,16 +54,25 @@ function createContact() {
 
 	// Take in the new contact information
 	let userId = readCookie().userId;
-	let firstName = document.getElementById("firstName").value;
-    let lastName = document.getElementById("lastName").value;
-	let email = document.getElementById("email").value;
-	let birthday = document.getElementById("birthday").value;
-    let phoneNumber = document.getElementById("phoneNumber").value;
+	
+	const contactForm = document.getElementById("createContactForm");
 
-	document.getElementById("addResult").innerHTML = "";
+	let firstName = contactForm.querySelector("#firstName").value;
+	let lastName = contactForm.querySelector("#lastName").value;
+	let email = contactForm.querySelector("#email").value;
+	let birthday = contactForm.querySelector("#birthday").value;
+	let phoneNumber = contactForm.querySelector("#phoneNumber").value;
+
+	// let firstName = document.getElementById("firstName").value;
+    	// let lastName = document.getElementById("lastName").value;
+	// let email = document.getElementById("email").value;
+	// let birthday = document.getElementById("birthday").value;
+    	// let phoneNumber = document.getElementById("phoneNumber").value;
+
+	// document.getElementById("addResult").innerHTML = "";
 
 	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
-    let jsonToBeSent = JSON.stringify(toBeSent);
+    	let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/AddContact.' + extension;
 
@@ -87,12 +96,12 @@ function createContact() {
 				// is this proper syntax? What happens when not properly added?
 				if (contactId == "")
 				{		
-					document.getElementById("addResult").innerHTML = "Could Not Add Contact";
+					// document.getElementById("addResult").innerHTML = "Could Not Add Contact";
 					return;
 				}
 				
 				// !!! Maybe change what happens after. Maybe go back by clicking x button
-				document.getElementById("addResult").innerHTML = "Contact Added!";
+				// document.getElementById("addResult").innerHTML = "Contact Added!";
 			}
 		};
         // SEND REQUEST
@@ -100,7 +109,7 @@ function createContact() {
     }
     catch(err)
 	{
-		document.getElementById("addResult").innerText = err.message;
+		// document.getElementById("addResult").innerText = err.message;
 	}
 }
 
