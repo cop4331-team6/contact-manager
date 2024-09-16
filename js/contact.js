@@ -69,7 +69,6 @@ function createContact() {
 	// let birthday = document.getElementById("birthday").value;
     	// let phoneNumber = document.getElementById("phoneNumber").value;
 
-	// document.getElementById("addResult").innerHTML = "";
 
 	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
     	let jsonToBeSent = JSON.stringify(toBeSent);
@@ -89,27 +88,22 @@ function createContact() {
 			{
 				// Convert JSON string to JS object
 				let jsonObject = JSON.parse( xhr.responseText ); //Response data
-				// After converted, can assign id
-				contactId = jsonObject.ContactID;
-		
-				// !!! Check for proper syntax
-				// is this proper syntax? What happens when not properly added?
-				if (contactId == "")
-				{		
-					// document.getElementById("addResult").innerHTML = "Could Not Add Contact";
-					return;
+
+				if (jsonObject.error) {
+					alert(`Error in creating contact: ${jsonObject.error}`);
 				}
 				
-				// !!! Maybe change what happens after. Maybe go back by clicking x button
-				// document.getElementById("addResult").innerHTML = "Contact Added!";
+				retrieveContacts();
 			}
+
+			
 		};
         // SEND REQUEST
-		xhr.send(jsonPayload);
+		xhr.send(jsonToBeSent);
     }
     catch(err)
 	{
-		// document.getElementById("addResult").innerText = err.message;
+		alert(`Error in creating contact: ${err.message}`);
 	}
 }
 
