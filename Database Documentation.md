@@ -32,8 +32,8 @@ CREATE DATABASE contactManager;
 ```sql
 CREATE TABLE Users (
     UserID int NOT NULL AUTO_INCREMENT,
-    Username varchar(255),
-    Password varchar(255),
+    Username varchar(255) COLLATE utf8mb4_unicode_ci,  -- Case-insensitive collation for username
+    Password varchar(255) COLLATE utf8mb4_bin,  -- Case-sensitive collation for password
     PRIMARY KEY (UserID)
 );
 
