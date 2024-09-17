@@ -112,8 +112,6 @@ body {
 
 .contact-list::-webkit-scrollbar-track {
     background: #1e90a5; /* Background of the scrollbar track */
-    border: 1px solid #cccccc34;
-    border-radius: 5px;
 }
 
 .contact-list::-webkit-scrollbar-thumb {
