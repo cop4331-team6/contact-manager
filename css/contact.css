@@ -20,7 +20,6 @@ body {
 .container {
     background: linear-gradient(145deg, #1b85a0, #1e90a5);
     width: 90%;
-    height: 90%;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.15);
@@ -102,8 +101,28 @@ body {
 /* contacts list */
 .contact-list {
     max-height: 400px;
-    overflow-y: auto;
+    overflow-y: scroll;
     width: 100%;
+}   
+
+/* custom stuff */
+.contact-list::-webkit-scrollbar {
+    width: 12px;  /* Width of the scrollbar */  
+}
+
+.contact-list::-webkit-scrollbar-track {
+    background: #1e90a5; /* Background of the scrollbar track */
+    border: 1px solid #cccccc34;
+    border-radius: 5px;
+}
+
+.contact-list::-webkit-scrollbar-thumb {
+    background-color: #ffe4e4; /* Scrollbar thumb (the draggable part) */
+    border-radius: 5px;  /* Round the corners */
+}
+
+.contact-list::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color on hover */
 }
 
 .contact-list table {
