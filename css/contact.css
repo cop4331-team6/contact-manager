@@ -100,9 +100,15 @@ body {
 }
 
 /* contacts list */
+.contact-list {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+}
+
 .contact-list table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse;  
     table-layout: fixed;
 }
 
