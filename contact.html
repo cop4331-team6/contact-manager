@@ -14,15 +14,15 @@
         <!-- header -->
         <div class="header">
             <h2>Contacts</h2>
-            <div class="button-group">
+            <div class="create-button">
                 <button class="new-contact" onclick="openPopup('createContactPopup')">Create Contact</button>
-                <button class="refresh" onclick="retrieveContacts()">Refresh</button>
             </div>
         </div>
 
         <!-- search -->
         <div class="search-bar">
             <input type="text" id="search" placeholder="Search">
+            <button class="search" onclick="retrieveContacts()">Search 🔍</button>
         </div>
 
         <!--- contacts list-->

@@ -39,7 +39,7 @@ body {
     font-size: 24px;
 }
 
-.header button {
+.new-contact {
     background-color: #6bafc0;
     color: white;
     border: none;
@@ -48,6 +48,26 @@ body {
     cursor: pointer;
     font-size: 14px;
     margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search {
+    background-color: #6bafc0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+.new-contact:hover {
+    background-color: #5fa2b3;
+}
+
+.search:hover {
+    background-color: #5fa2b3;
 }
 
 .header button:hover {
@@ -89,7 +109,7 @@ body {
 }
 
 .search-bar input {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -120,7 +140,7 @@ body {
 }
 
 .contact-list::-webkit-scrollbar-thumb:hover {
-    background-color: #555; /* Darker color on hover */
+    background-color: #555;
 }
 
 .contact-list table {
