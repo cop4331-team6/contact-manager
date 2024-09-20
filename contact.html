@@ -39,10 +39,10 @@
                 </thead>
                 <tbody id="contact-list-body">
                     <tr id="contact-row">
-                        <td id="contact-name">John Pork</td>
-                        <td id="contact-phone">1234567890</td>
-                        <td id="contact-email">test@gmail.com</td>
-                        <td id="birthday">9/12/2004</td>
+                        <td id="contact-name"></td>
+                        <td id="contact-phone"></td>
+                        <td id="contact-email"></td>
+                        <td id="contact-birthday"></td>
                         <td>
                             <button id="edit-contact" class="edit-btn" onclick="initiateEditContactPopup(this)">📝</button>
                             <button id="delete-contact"class="delete-btn" onclick="deleteContact(this)">🗑️</button>
@@ -114,6 +114,10 @@
     <!-- popup funtionality for create and edit button -->
     <script>
         function openPopup(popupId) {
+            if (popupId === "createContactPopup") {
+                const defaultBirthday = new Date().toISOString().substring(0, 10);
+                document.getElementById("createContactPopup").querySelector("#birthday").value = defaultBirthday;
+            }
             document.getElementById(popupId).classList.add('active');
             document.getElementById('popupOverlay').classList.add('active');
         }

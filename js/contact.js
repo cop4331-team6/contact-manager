@@ -63,12 +63,6 @@ function createContact() {
 	let birthday = contactForm.querySelector("#birthday").value;
 	let phoneNumber = contactForm.querySelector("#phoneNumber").value;
 
-	// let firstName = document.getElementById("firstName").value;
-    	// let lastName = document.getElementById("lastName").value;
-	// let email = document.getElementById("email").value;
-	// let birthday = document.getElementById("birthday").value;
-    	// let phoneNumber = document.getElementById("phoneNumber").value;
-
 
 	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
     	let jsonToBeSent = JSON.stringify(toBeSent);
@@ -117,13 +111,16 @@ function initiateEditContactPopup(e) {
 	const lastName = currContactRow.querySelector("#contact-name").getAttribute("lastName");
 	const phoneNumber = currContactRow.querySelector("#contact-phone").innerText;
 	const email = currContactRow.querySelector("#contact-email").innerText;
+	const birthday = currContactRow.querySelector("#contact-birthday").innerText;
+	// Happy birthday!
+	const defaultBirthday = new Date().toISOString().substring(0, 10);
 
 	// Set the previous values in the input popup.
 	const editContactPopup = document.getElementById("editContactPopup");
 	editContactPopup.querySelector("#firstName").value = firstName || "";
 	editContactPopup.querySelector("#lastName").value = lastName || "";
 	editContactPopup.querySelector("#email").value = email || "";
-	editContactPopup.querySelector("#birthday").value = "1969-04-20";
+	editContactPopup.querySelector("#birthday").value = birthday || defaultBirthday;
 	editContactPopup.querySelector("#phoneNumber").value = phoneNumber || "";
 	editContactPopup.querySelector("#save-button").value = ContactID;
 	openPopup("editContactPopup");
@@ -254,6 +251,7 @@ function displayContacts(contactsJson) {
         //                     `-${contact.phoneNumber.substring(6,10)}`;
         currContactRow.querySelector("#contact-phone").innerText = contact.phoneNumber;
         currContactRow.querySelector("#contact-email").innerText = contact.email;
+		currContactRow.querySelector("#contact-birthday").innerHTML = contact.birthday;
         currContactRow.querySelector("#edit-contact").value = contact.ContactID;
         currContactRow.querySelector("#delete-contact").value = contact.ContactID;
         currContactRow.style.display = "";
