@@ -5,6 +5,7 @@ const extension = 'php';
 
 document.addEventListener('DOMContentLoaded', () => {
 	document.getElementsByClassName("header")[0].querySelector("h2").textContent = `${readCookie().userName}'s Contacts`;
+	resetCreateContactPopup();
     retrieveContacts();
 });
 
@@ -48,6 +49,16 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
+function resetCreateContactPopup() {
+	const defaultBirthday = new Date().toISOString().substring(0, 10);
+	const contactForm = document.getElementById("createContactPopup");
+	contactForm.querySelector("#firstName").value = "";
+	contactForm.querySelector("#lastName").value = "";
+	contactForm.querySelector("#email").value = "";
+    contactForm.querySelector("#birthday").value = defaultBirthday;
+	contactForm.querySelector("#phoneNumber").value = "";
+}
+
 function createContact() {
 	// Add button takes to html or popup to add contact
 	// Text box asks for First Name, Last Name, Email, Phone Number
@@ -66,7 +77,7 @@ function createContact() {
 
 
 	let toBeSent = {userId:userId, firstName:firstName, lastName:lastName, email:email, birthday:birthday, phoneNumber:phoneNumber};
-    	let jsonToBeSent = JSON.stringify(toBeSent);
+    let jsonToBeSent = JSON.stringify(toBeSent);
 
 	let url = urlBase + '/AddContact.' + extension;
 
@@ -88,6 +99,7 @@ function createContact() {
 					alert(`Error in creating contact: ${jsonObject.error}`);
 				}
 				closePopup('createContactPopup');
+				resetCreateContactPopup();
 				retrieveContacts();
 			} else if (this.readyState == 4) {
 				alert(`Error: ${this.status}`);

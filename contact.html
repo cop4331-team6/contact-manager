@@ -114,10 +114,6 @@
     <!-- popup funtionality for create and edit button -->
     <script>
         function openPopup(popupId) {
-            if (popupId === "createContactPopup") {
-                const defaultBirthday = new Date().toISOString().substring(0, 10);
-                document.getElementById("createContactPopup").querySelector("#birthday").value = defaultBirthday;
-            }
             document.getElementById(popupId).classList.add('active');
             document.getElementById('popupOverlay').classList.add('active');
         }
