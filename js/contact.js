@@ -4,6 +4,7 @@ const urlBase = '/LAMPAPI';
 const extension = 'php';
 
 document.addEventListener('DOMContentLoaded', () => {
+	document.getElementsByClassName("header")[0].querySelector("h2").textContent = `${readCookie().userName}'s Contacts`;
     retrieveContacts();
 });
 
