@@ -124,7 +124,7 @@ function doSignUp() {
 				}
 				
 				// Save data to a cookie
-				saveCookie(jsonObject.UserName, jsonObject.UserID);
+				saveCookie(jsonObject.Username, jsonObject.UserID);
 				
 				// Take user to the page after successfully logging in
 				window.location.href = "contact.html";
